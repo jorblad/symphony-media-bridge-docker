@@ -1,0 +1,19 @@
+{
+  "port": 8081,
+  "logStdOut": true,
+  "logLevel": "INFO",
+  "defaultLastN": 5,
+
+  "ice": {
+    "enableIpv6": false,
+    "useAwsInfo": false,
+    "singlePort": 10000,
+    "udpPortRangeLow": 10006,
+    "udpPortRangeHigh": 26000,
+
+    "tcp": {
+      "enable": true,
+      "port": 8080
+    }
+  }
+}
