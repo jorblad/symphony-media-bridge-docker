@@ -1,4 +1,4 @@
-FROM ubuntu:26.04
+FROM ubuntu:20.04
 
 ARG SMB_VERSION=2.1.0-266
 ENV DEBIAN_FRONTEND=noninteractive
