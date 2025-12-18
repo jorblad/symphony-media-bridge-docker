@@ -1,7 +1,7 @@
 # =========================
 # 1️⃣ Build stage
 # =========================
-FROM ubuntu:24.04 AS builder
+FROM ubuntu:22.04 AS builder
 
 ARG SMB_VERSION=2.4.0-617
 ENV DEBIAN_FRONTEND=noninteractive
@@ -33,7 +33,9 @@ RUN mkdir build && cd build && \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_C_COMPILER=clang \
       -DCMAKE_CXX_COMPILER=clang++ \
-    && make -j$(nproc)
+      -DSMB_BUILD_EXAMPLES=OFF \
+      -DSMB_BUILD_TESTS=OFF && \
+    make -j$(nproc)
 
 # =========================
 # 2️⃣ Runtime stage
