@@ -1,44 +1,28 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-
-  "extends": [
-    "config:recommended",
-    ":disableRateLimiting",
-    ":semanticCommits"
-  ],
-
-  "timezone": "Europe/Stockholm",
-
+  "extends": ["config:recommended"],
   "labels": ["dependencies"],
-
-  "docker": {
-    "enabled": true
-  },
-
+  "docker": { "enabled": true },
   "packageRules": [
     {
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["ubuntu"],
-      "groupName": "Ubuntu base image",
-      "separateMinorPatch": false,
-      "automerge": false
-    },
-    {
-      "matchDatasources": ["github-releases"],
+      "matchDatasources": ["github-tags"],
       "matchPackageNames": ["finos/SymphonyMediaBridge"],
       "groupName": "Symphony Media Bridge",
       "versioning": "loose",
       "automerge": false
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ubuntu"],
+      "groupName": "Ubuntu base image",
+      "automerge": false
     }
   ],
-
   "regexManagers": [
     {
       "fileMatch": ["^Dockerfile$"],
-      "matchStrings": [
-        "ARG SMB_VERSION=(?<currentValue>.+)"
-      ],
-      "datasourceTemplate": "github-releases",
+      "matchStrings": ["ARG SMB_VERSION=(?<currentValue>.+)"],
+      "datasourceTemplate": "github-tags",
       "depNameTemplate": "finos/SymphonyMediaBridge"
     }
   ]
