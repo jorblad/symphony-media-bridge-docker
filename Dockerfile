@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS builder
+FROM ubuntu:26.04 AS builder
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -71,7 +71,7 @@ RUN mkdir build && cd build && \
       -DBUILD_TESTING=OFF && \
     make -j$(nproc)
 
-FROM ubuntu:22.04 AS runtime
+FROM ubuntu:26.04 AS runtime
 RUN apt-get -y update && apt-get -y install --no-install-recommends \
     libc++1 \
     libc++abi1 \
