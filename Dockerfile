@@ -48,7 +48,7 @@ RUN cd /tmp/opus-1.3.1 && ./configure && make -j$(nproc) && make install
 # Minimal extra packages for build
 RUN apt-get -y update && apt-get -y install python3 lsb-release ca-certificates && rm -rf /var/lib/apt/lists/*
 
-ARG SMB_VERSION=2.4.0-617
+ARG SMB_VERSION=2.4.0-619
 WORKDIR /build
 RUN git clone --branch ${SMB_VERSION} https://github.com/finos/SymphonyMediaBridge.git SMB
 
